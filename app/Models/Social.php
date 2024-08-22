@@ -9,7 +9,14 @@ class Social extends Model
 {
     use HasFactory;
 
-    protected static function booted()
+    protected function casts(): array
+    {
+        return [
+            'active' => 'boolean',
+        ];
+    }
+
+    protected static function booted(): void
     {
         static::created(function (Social $social) {
             $social->update(['order' => $social->id]);

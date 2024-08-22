@@ -22,6 +22,16 @@ class SocialFactory extends Factory
             'icon' => function (array $attributes) {
                 return 'bi-' . str($attributes['name'])->slug();
             },
+            'active' => true,
         ];
+    }
+
+    public function inactive(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'active' => false,
+            ];
+        });
     }
 }
