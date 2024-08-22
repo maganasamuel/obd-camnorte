@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Builder, Model};
 
-class Social extends Model
+class Contact extends Model
 {
     use HasFactory;
 
@@ -23,8 +23,8 @@ class Social extends Model
 
     protected static function booted(): void
     {
-        static::created(function (Social $social) {
-            $social->update(['order' => $social->id]);
+        static::created(function (Contact $contact) {
+            $contact->update(['order' => $contact->id]);
         });
     }
 }

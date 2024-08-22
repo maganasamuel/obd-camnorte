@@ -2,24 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SocialResource\{Pages, RelationManagers};
-use App\Models\Social;
+use App\Filament\Resources\ContactResource\{Pages, RelationManagers};
+use App\Models\Contact;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
-use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletingScope};
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
 
-class SocialResource extends Resource
+class ContactResource extends Resource
 {
-    protected static ?string $model = Social::class;
+    protected static ?string $model = Contact::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Social Media Links';
-
-    protected static ?string $modelLabel = 'Social Media Link';
+    protected static ?string $modelLabel = 'Contact';
 
     public static function form(Form $form): Form
     {
@@ -29,25 +28,17 @@ class SocialResource extends Resource
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                Forms\Components\TextInput::make('icon')
+                Forms\Components\TextInput::make('email')
+                    ->email()
                     ->required()
-                    ->unique(ignoreRecord: true)
-                    ->in(
-                        collect(scandir(base_path('vendor\davidhsianturi\blade-bootstrap-icons\resources\svg')))
-                            ->map(fn ($item) => str($item)->replace('.svg', '')->prepend('bi-'))
-                            ->all()
-                    )
-                    ->maxLength(255)
-                    ->placeholder('bi-youtube')
-                    ->hint(
-                        str('<a href="' . config('options.icons_hint_url') . '" target="_blank">Need help?</a>')
-                            ->toHtmlString()
-                    ),
-                Forms\Components\TextInput::make('url')
-                    ->label('Link')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('contact_number')
+                    ->label('Contact Number')
                     ->required()
-                    ->activeUrl()
-                    ->unique(ignoreRecord: true)
+                    ->tel()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('address')
+                    ->required()
                     ->columnSpanFull(),
             ]);
     }
@@ -58,7 +49,12 @@ class SocialResource extends Resource
             ->reorderable('order')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->icon(fn (Model $record) => $record->icon)
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('contact_number')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('address')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
@@ -95,7 +91,7 @@ class SocialResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageSocials::route('/'),
+            'index' => Pages\ManageContacts::route('/'),
         ];
     }
 }
