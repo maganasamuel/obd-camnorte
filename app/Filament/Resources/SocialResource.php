@@ -18,6 +18,8 @@ class SocialResource extends Resource
 
     protected static ?string $navigationLabel = 'Social Media Links';
 
+    protected static ?string $modelLabel = 'Social Media Link';
+
     public static function form(Form $form): Form
     {
         return $form
