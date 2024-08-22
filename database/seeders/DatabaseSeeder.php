@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
             'email' => str(config('mail.from.address'))->after('@')->prepend('admin@'),
         ]);
 
-        $this->call(AddressSeeder::class);
+        $this->call([AddressSeeder::class, CitySlugSeeder::class]);
     }
 }
