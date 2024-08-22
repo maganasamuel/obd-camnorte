@@ -2,16 +2,15 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ContactResource\Pages;
-use App\Filament\Resources\ContactResource\RelationManagers;
+use App\Filament\Resources\ContactResource\{Pages, RelationManagers};
 use App\Models\Contact;
-use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\{Forms, Tables};
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
 
 class ContactResource extends Resource
 {
@@ -19,33 +18,35 @@ class ContactResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $modelLabel = 'Contact';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_number')
+                    ->label('Contact Number')
                     ->required()
+                    ->tel()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('address')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
-                Forms\Components\TextInput::make('order')
-                    ->numeric(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -53,25 +54,31 @@ class ContactResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contact_number')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('address')
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('order')
             ->filters([
-                //
+                Tables\Filters\Filter::make('active')
+                    ->query(fn (Builder $query) => $query->where('active', true)),
+                Tables\Filters\Filter::make('inactive')
+                    ->query(fn (Builder $query) => $query->where('active', false)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('toggle_active')
+                    ->label(fn (Model $record) => $record->active ? 'Deactivate' : 'Activate')
+                    ->requiresConfirmation()
+                    ->action(function (Model $record) {
+                        $record->update(['active' => ! $record->active]);
+
+                        Notification::make()
+                            ->title(self::$modelLabel . ' has been ' . ($record->active ? 'activated' : 'deactivated') . '.')
+                            ->success()
+                            ->send();
+                    }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
