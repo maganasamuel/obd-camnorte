@@ -16,7 +16,7 @@ return new class() extends Migration {
             $table->string('name')->unique();
             $table->text('url');
             $table->string('icon');
-            $table->unsignedTinyInteger('order');
+            $table->unsignedTinyInteger('order')->nullable();
 
             $table->timestamps();
         });
