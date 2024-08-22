@@ -9,8 +9,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
+use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletingScope};
 
 class SocialResource extends Resource
 {
@@ -66,6 +65,10 @@ class SocialResource extends Resource
             ])
             ->defaultSort('order')
             ->filters([
+                Tables\Filters\Filter::make('active')
+                    ->query(fn (Builder $query) => $query->where('active', true)),
+                Tables\Filters\Filter::make('inactive')
+                    ->query(fn (Builder $query) => $query->where('active', false)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
