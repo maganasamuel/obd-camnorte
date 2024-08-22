@@ -26,15 +26,18 @@ class SocialResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                Forms\Components\Textarea::make('url')
-                    ->required()
-                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('icon')
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                Forms\Components\TextInput::make('order')
-                    ->numeric(),
+                Forms\Components\TextInput::make('url')
+                    ->label('Link')
+                    ->required()
+                    ->activeUrl()
+                    ->unique(ignoreRecord: true)
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -44,11 +47,6 @@ class SocialResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('icon')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
