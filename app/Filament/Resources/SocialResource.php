@@ -57,20 +57,11 @@ class SocialResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->icon(fn (Social $record) => $record->icon)
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('active')
-                    ->boolean()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->boolean(),
             ])
+            ->defaultSort('order')
             ->filters([
             ])
             ->actions([
