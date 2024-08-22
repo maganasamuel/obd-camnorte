@@ -54,6 +54,7 @@ class SocialResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->icon(fn (Social $record) => $record->icon)
