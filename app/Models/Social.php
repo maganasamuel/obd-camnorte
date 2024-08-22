@@ -9,9 +9,9 @@ class Social extends Model
 {
     use HasFactory;
 
-    public function scopeActive(Builder $query): avoid
+    public function scopeActive(Builder $query): void
     {
-        return $query->where('active', true);
+        $query->where('active', true);
     }
 
     protected function casts(): array
