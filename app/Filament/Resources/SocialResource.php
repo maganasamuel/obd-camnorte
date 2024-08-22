@@ -46,6 +46,7 @@ class SocialResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->icon(fn (Social $record) => $record->icon)
                     ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
