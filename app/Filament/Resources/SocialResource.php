@@ -31,7 +31,17 @@ class SocialResource extends Resource
                 Forms\Components\TextInput::make('icon')
                     ->required()
                     ->unique(ignoreRecord: true)
-                    ->maxLength(255),
+                    ->in(
+                        collect(scandir(base_path('vendor\davidhsianturi\blade-bootstrap-icons\resources\svg')))
+                            ->map(fn ($item) => str($item)->replace('.svg', '')->prepend('bi-'))
+                            ->all()
+                    )
+                    ->maxLength(255)
+                    ->placeholder('bi-youtube')
+                    ->hint(
+                        str('<a href="' . config('options.icons_hint_url') . '" target="_blank">Need help?</a>')
+                            ->toHtmlString()
+                    ),
                 Forms\Components\TextInput::make('url')
                     ->label('Link')
                     ->required()
