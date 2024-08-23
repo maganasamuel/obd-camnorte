@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Scopes\{HasActiveScope, HasEffectiveScope};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Builder, Model};
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
@@ -9,17 +10,16 @@ use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 class Ad extends Model implements HasMedia
 {
     use HasFactory;
+    use HasActiveScope;
+    use HasEffectiveScope;
     use InteractsWithMedia;
-
-    public function scopeActive(Builder $query): void
-    {
-        $query->where('active', true);
-    }
 
     protected function casts(): array
     {
         return [
             'active' => 'boolean',
+            'effective_from' => 'date',
+            'effective_to' => 'date',
         ];
     }
 
