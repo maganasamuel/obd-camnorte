@@ -5,7 +5,7 @@ namespace App\Traits\Attributes;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
 
-trait HasEffectivityAttribute
+trait HasEffectiveAttribute
 {
     protected function effectivity(): Attribute
     {

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Traits\Attributes\HasEffectivityAttribute;
+use App\Traits\Attributes\HasEffectiveAttribute;
 use App\Traits\HasOrderColumn;
 use App\Traits\Scopes\{HasActiveScope, HasEffectiveScope};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +15,7 @@ class Ad extends Model implements HasMedia
     use HasOrderColumn;
     use HasActiveScope;
     use HasEffectiveScope;
-    use HasEffectivityAttribute;
+    use HasEffectiveAttribute;
     use InteractsWithMedia;
 
     protected $appends = [
