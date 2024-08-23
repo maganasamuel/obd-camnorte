@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Builder, Model};
+use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 
-class Ad extends Model
+class Ad extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     public function scopeActive(Builder $query): void
     {
