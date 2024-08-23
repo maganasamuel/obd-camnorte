@@ -17,7 +17,17 @@ class AdFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->company(),
+            'active' => true,
         ];
+    }
+
+    public function inactive(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'active' => false,
+            ];
+        });
     }
 }
