@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ad;
+use App\Models\Social;
 use Illuminate\Database\Seeder;
 
 class TestSeeder extends Seeder
@@ -12,6 +12,6 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        Ad::active()->effective()->dd();
+        $social = Social::factory()->create();
     }
 }
