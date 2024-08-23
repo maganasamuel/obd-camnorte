@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
 use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletingScope};
+use Illuminate\Support\Carbon;
 
 class AdResource extends Resource
 {
@@ -29,8 +30,10 @@ class AdResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('effective_from')
+                    ->label('Effective From')
                     ->required(),
                 Forms\Components\DatePicker::make('effective_to')
+                    ->label('Effective To')
                     ->required()
                     ->afterOrEqual('effective_from'),
             ]);
@@ -50,15 +53,35 @@ class AdResource extends Resource
                 Tables\Columns\TextColumn::make('effectivity')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'active' => 'success',
-                        'dormant' => 'gray',
+                        'active' => 'info',
+                        'dormant' => 'warning',
                         'expired' => 'danger',
-                    }),
+                    })
+                    ->formatStateUsing(fn (string $state): string => str($state)->upper()->value()),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
             ])
             ->defaultSort('order')
             ->filters([
+                Tables\Filters\Filter::make('effectivity')
+                    ->form([
+                        Forms\Components\Select::make('effectivity')
+                            ->options([
+                                'effective' => 'ACTIVE',
+                                'dormant' => 'DORMANT',
+                                'expired' => 'EXPIRED',
+                            ]),
+                        Forms\Components\DatePicker::make('effective_from')
+                            ->label('Effective From'),
+                        Forms\Components\DatePicker::make('effective_to')
+                            ->label('Effective To'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when($data['effectivity'] ?? '', fn (Builder $query, $value) => $query->{"{$value}"}())
+                            ->when($data['effective_from'] ?? '', fn (Builder $query, $value) => $query->whereDate('effective_from', '>=', Carbon::parse($value)->format('Y-m-d')))
+                            ->when($data['effective_to'] ?? '', fn (Builder $query, $value) => $query->whereDate('effective_to', '<=', Carbon::parse($value)->format('Y-m-d')));
+                    }),
                 Tables\Filters\Filter::make('active')
                     ->query(fn (Builder $query) => $query->where('active', true)),
                 Tables\Filters\Filter::make('inactive')
