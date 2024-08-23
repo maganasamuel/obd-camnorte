@@ -26,16 +26,19 @@ class AdFactory extends Factory
         ];
     }
 
-    public function inactive(): Factory
+    public function dormant(): Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'active' => false,
+                'effective_from' => now()->addDays(random_int(1, 5)),
+                'effective_to' => function (array $attributes) {
+                    return $attributes['effective_from']->clone()->addDays(random_int(5, 30));
+                },
             ];
         });
     }
 
-    public function ineffective(): Factory
+    public function expired(): Factory
     {
         return $this->state(function (array $attributes) {
             return [
@@ -43,6 +46,15 @@ class AdFactory extends Factory
                 'effective_from' => function (array $attributes) {
                     return $attributes['effective_to']->clone()->subDays(random_int(5, 30));
                 },
+            ];
+        });
+    }
+
+    public function inactive(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'active' => false,
             ];
         });
     }
