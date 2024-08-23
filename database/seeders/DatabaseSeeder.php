@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Administrator',
-            'email' => str(config('mail.from.address'))->after('@')->prepend('admin@'),
+            'email' => app()->isProduction()
+                ? str(config('mail.from.address'))->after('@')->prepend('admin@')
+                : 'admin@mail.com',
         ]);
 
         $this->call([AddressSeeder::class, CitySlugSeeder::class]);
