@@ -18,10 +18,8 @@ class AdFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'effective_from' => now(),
-            'effective_to' => function (array $attributes) {
-                return $attributes['effective_from']->clone()->addDays(random_int(5, 30));
-            },
+            'effective_from' => now()->subDays(random_int(1, 1000)),
+            'effective_to' => now()->addDays(random_int(1, 1000)),
             'active' => true,
         ];
     }
