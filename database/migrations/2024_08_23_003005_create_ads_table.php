@@ -14,6 +14,8 @@ return new class() extends Migration {
             $table->id();
 
             $table->string('name')->unique();
+            $table->date('effective_from');
+            $table->date('effective_to');
             $table->boolean('active')->default(1);
             $table->unsignedTinyInteger('order')->nullable();
 
