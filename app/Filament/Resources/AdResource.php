@@ -31,7 +31,8 @@ class AdResource extends Resource
                 Forms\Components\DatePicker::make('effective_from')
                     ->required(),
                 Forms\Components\DatePicker::make('effective_to')
-                    ->required(),
+                    ->required()
+                    ->afterOrEqual('effective_from'),
             ]);
     }
 
@@ -43,9 +44,16 @@ class AdResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('effective_from')
-                    ->date(),
-                Tables\Columns\TextColumn::make('effective_to')
-                    ->date(),
+                    ->label('Effective Period')
+                    ->formatStateUsing(fn (string $state, Model $record): string => $record->effective_from->format('M d, Y') . ' - ' . $record->effective_to->format('M d, Y'))
+                    ->description(fn (Model $record): string => $record->effective_period),
+                Tables\Columns\TextColumn::make('effectivity')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'active' => 'success',
+                        'dormant' => 'gray',
+                        'expired' => 'danger',
+                    }),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
             ])
