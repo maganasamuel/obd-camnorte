@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Attributes\HasEffectivityAttribute;
 use App\Traits\HasOrderColumn;
 use App\Traits\Scopes\{HasActiveScope, HasEffectiveScope};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,7 +15,13 @@ class Ad extends Model implements HasMedia
     use HasOrderColumn;
     use HasActiveScope;
     use HasEffectiveScope;
+    use HasEffectivityAttribute;
     use InteractsWithMedia;
+
+    protected $appends = [
+        'effectivity',
+        'effective_period',
+    ];
 
     protected function casts(): array
     {
