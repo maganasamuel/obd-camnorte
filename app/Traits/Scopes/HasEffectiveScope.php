@@ -14,11 +14,11 @@ trait HasEffectiveScope
 
     public function scopeDormant(Builder $query): void
     {
-        $query->whereDate('effective_from', '<', now()->format('Y-m-d'));
+        $query->whereDate('effective_from', '>', now()->format('Y-m-d'));
     }
 
     public function scopeExpired(Builder $query): void
     {
-        $query->whereDate('effective_to', '>', now()->format('Y-m-d'));
+        $query->whereDate('effective_to', '<', now()->format('Y-m-d'));
     }
 }
