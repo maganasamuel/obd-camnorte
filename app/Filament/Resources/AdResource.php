@@ -29,6 +29,12 @@ class AdResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\SpatieMediaLibraryFileUpload::make('brand_logo')
+                    ->collection('ads')
+                    ->label('Brand Logo')
+                    ->required()
+                    ->image()
+                    ->maxSize(5 * 1024),
                 Forms\Components\DatePicker::make('effective_from')
                     ->label('Effective From')
                     ->required(),
@@ -44,6 +50,11 @@ class AdResource extends Resource
         return $table
             ->reorderable('order')
             ->columns([
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('brand_logo')
+                    ->collection('ads')
+                    ->conversion('thumb')
+                    ->width(192)
+                    ->height(108),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('effective_from')
