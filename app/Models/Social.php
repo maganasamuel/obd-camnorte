@@ -2,29 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\HasOrderColumn;
+use App\Traits\Scopes\HasActiveScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\{Builder, Model};
+use Illuminate\Database\Eloquent\Model;
 
 class Social extends Model
 {
     use HasFactory;
-
-    public function scopeActive(Builder $query): void
-    {
-        $query->where('active', true);
-    }
+    use HasOrderColumn;
+    use HasActiveScope;
 
     protected function casts(): array
     {
         return [
             'active' => 'boolean',
         ];
-    }
-
-    protected static function booted(): void
-    {
-        static::created(function (Social $social) {
-            $social->update(['order' => $social->id]);
-        });
     }
 }
