@@ -2,13 +2,26 @@
 <html lang="{{ str(app()->getLocale())->replace('_', '-')->value() }}">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="robots"
+    content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical"
+    href="{{ config('app.url') }}">
   <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  @if (config('app.description'))
+    <meta name="description"
+      content="{{ config('app.description') }}">
+  @endif
+
   <meta name="csrf-token"
     content="{{ csrf_token() }}">
 
   <title>{{ $title ?? config('app.name') }}</title>
+
+  <link rel="shortcut icon"
+    href="{{ Vite::image('favicon.png') }}">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet">
