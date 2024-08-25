@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-Route::view('/', 'welcome');
+Volt::route('/', 'pages.index')
+    ->name('index');
 
 /* Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -10,7 +12,6 @@ Route::view('/', 'welcome');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
-    ->name('profile');
+    ->name('profile');  */
 
-require __DIR__.'/auth.php';
- */
+// require __DIR__.'/auth.php';
