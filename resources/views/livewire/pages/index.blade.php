@@ -1,9 +1,15 @@
 <?php
 
-use Livewire\Volt\Component;
-use Livewire\Attributes\Layout;
+use App\Models\Contact;
+use function Livewire\Volt\{layout, title, state, mount};
 
-new #[Layout('layouts.main')] class extends Component {};
+layout('layouts.main');
+
+state(['contacts']);
+
+mount(function () {
+    $this->contacts = Contact::orderBy('order')->get();
+});
 ?>
 
 <div>
