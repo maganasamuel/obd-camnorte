@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{-- {{ str(app()->getLocal())->replace('_', '-')->value() }} --}}">
+<html lang="{{ str(app()->getLocale())->replace('_', '-')->value() }}">
 
 <head>
   <meta charset="UTF-8">
@@ -28,19 +28,11 @@
 </head>
 
 <body class="font-sans antialiased dark:bg-neutral-900">
-  <!-- ========== HEADER ========== -->
   <x-layout.main.header />
-  <!-- ========== END HEADER ========== -->
-
-  <!-- ========== MAIN CONTENT ========== -->
   <main id="content">
     {{ $slot }}
   </main>
-  <!-- ========== END MAIN CONTENT ========== -->
-
-  <!-- ========== FOOTER ========== -->
   <x-layout.main.footer />
-  <!-- ========== END FOOTER ========== -->
 </body>
 
 </html>
