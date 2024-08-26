@@ -7,14 +7,7 @@
 
     <!-- Button Group -->
     <div class="flex items-center py-1 gap-x-2 ms-auto md:ps-6 md:order-3 md:col-span-3">
-      <button type="button"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-black border border-gray-200 gap-x-2 rounded-xl hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:hover:bg-white/10 dark:text-white dark:hover:text-white">
-        Sign in
-      </button>
-      <button type="button"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-black transition border border-transparent gap-x-2 rounded-xl bg-lime-400 hover:bg-lime-500 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-lime-500">
-        Hire us
-      </button>
+      <x-theme-switcher />
 
       <div class="md:hidden">
         <button type="button"
