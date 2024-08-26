@@ -67,27 +67,9 @@
     <div id="navbar-collapse-with-animation"
       class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
       <div class="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
-        <div>
-          <a class="relative inline-block text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-lime-400 dark:text-white"
-            href="#"
-            aria-current="page">Work</a>
-        </div>
-        <div>
-          <a class="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300"
-            href="#">Services</a>
-        </div>
-        <div>
-          <a class="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300"
-            href="#">About</a>
-        </div>
-        <div>
-          <a class="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300"
-            href="#">Careers</a>
-        </div>
-        <div>
-          <a class="inline-block text-black hover:text-gray-600 dark:text-white dark:hover:text-neutral-300"
-            href="#">Blog</a>
-        </div>
+        <x-topbar-link :active="request()->routeIs('index')"
+          href="{{ route('index') }}">Home</x-topbar-link>
+        <x-topbar-link href="{{ route('index') }}#contact-us">Contact Us</x-topbar-link>
       </div>
     </div>
     <!-- End Collapse -->
