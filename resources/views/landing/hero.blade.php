@@ -1,8 +1,11 @@
-<div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl bg-gradient-to-tr from-[#61dc57] to-[#b4eb58]">
+<div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl"
+  style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
+  <img src="{{ Vite::image('cover.jpg') }}"
+    class="absolute inset-0 object-cover object-center w-full h-full opacity-25" />
   <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
     <div class="text-center">
       <div class="relative inline-block">
-        <h1 class="text-4xl font-bold text-gray-800 break-all sm:text-6xl dark:text-neutral-200 text-balance">
+        <h1 class="text-4xl font-bold text-gray-800 break-all sm:text-6xl dark:text-neutral-200 text-balance drop-shadow-md">
           {{ config('app.name') }}
         </h1>
         <div class="absolute top-0 hidden translate-x-20 -translate-y-12 md:block end-0">
@@ -41,12 +44,10 @@
           </svg>
         </div>
       </div>
-
-      <p class="mt-3 text-gray-600 dark:text-neutral-400">
+      <p class="mt-3 text-gray-600 dark:text-neutral-400 drop-shadow-md">
         {{ config('app.description') }}
       </p>
-
-      <div class="mt-10 sm:mt-20 text-balance">
+      <div class="relative mt-10 sm:mt-20 text-balance">
         @foreach ($cities as $city)
           <a class="inline-flex items-center px-4 py-3 m-1 text-sm font-medium text-gray-800 uppercase bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
             href="#">
