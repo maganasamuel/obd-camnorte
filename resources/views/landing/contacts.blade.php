@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\Contact;
+
+$contacts = Contact::orderBy('order')->get();
+?>
+
 @if ($contacts->count())
   <div class="px-4 py-12 mx-auto max-w-7xl lg:px-6 lg:px-8 lg:py-24">
     <div class="max-w-2xl mx-auto mb-6 text-center sm:mb-10">

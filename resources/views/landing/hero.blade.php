@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\City;
+
+$cities = City::provinced()->get();
+?>
+
 <div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl"
   style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
   <img src="{{ Vite::image('cover.jpg') }}"
