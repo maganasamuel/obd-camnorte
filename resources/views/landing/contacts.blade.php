@@ -6,10 +6,11 @@ $contacts = Contact::orderBy('order')->get();
 ?>
 
 @if ($contacts->count())
-  <div class="px-4 py-12 mx-auto max-w-7xl lg:px-6 lg:px-8 lg:py-24">
+  <div class="px-4 py-12 mx-auto max-w-7xl lg:px-8 lg:py-24"
+    id="contact-us">
     <div class="max-w-2xl mx-auto mb-6 text-center sm:mb-10">
       <h2 class="text-2xl font-medium text-black sm:text-4xl dark:text-white">
-        Contacts
+        Contact Us
       </h2>
     </div>
     <div class="grid grid-cols-1 gap-6 lg:items-center md:gap-8 lg:gap-12 {{ $contacts->count() > 1 ? 'lg:grid-cols-2' : '' }}">

@@ -6,6 +6,7 @@ $cities = City::provinced()->get();
 ?>
 
 <div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl"
+  id="home"
   style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
   <img src="{{ Vite::image('cover.jpg') }}"
     class="absolute inset-0 object-cover object-center w-full h-full opacity-25" />
