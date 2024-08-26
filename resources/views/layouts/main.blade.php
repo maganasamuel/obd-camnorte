@@ -41,7 +41,8 @@
 
 <body class="font-sans antialiased dark:bg-neutral-900">
   <x-layout.main.header />
-  <main id="content">
+  <main id="content"
+    class="pt-4">
     {{ $slot }}
   </main>
   <x-layout.main.footer />
