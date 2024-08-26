@@ -66,7 +66,7 @@ $contacts = Contact::orderBy('order')->get();
                   </p>
                   <p>
                     <a class="relative inline-block font-medium text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-lime-400 hover:before:bg-black focus:outline-none focus:before:bg-black dark:text-white dark:hover:before:bg-white dark:focus:before:bg-white"
-                      href="mailto:example@site.so">
+                      href="mailto:{{ $contact->email }}">
                       {{ $contact->email }}
                     </a>
                   </p>
@@ -92,7 +92,7 @@ $contacts = Contact::orderBy('order')->get();
                   </p>
                   <p>
                     <a class="relative inline-block font-medium text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-lime-400 hover:before:bg-black focus:outline-none focus:before:bg-black dark:text-white dark:hover:before:bg-white dark:focus:before:bg-white"
-                      href="mailto:example@site.so">
+                      href="tel:{{ $contact->contact_number }}">
                       {{ $contact->contact_number }}
                     </a>
                   </p>
