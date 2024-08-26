@@ -1,25 +1,30 @@
 <?php
 
+use App\Models\City;
 use App\Models\Contact;
 use function Livewire\Volt\{layout, title, state, mount};
 
 layout('layouts.main');
 
-state(['contacts']);
+state(['cities', 'contacts']);
 
 mount(function () {
+    $this->cities = City::provinced()->get();
+
     $this->contacts = Contact::orderBy('order')->get();
 });
 ?>
 
 <div>
-  @include('landing.slider')
+  @include('landing.hero')
 
-  @include('landing.clients')
+  {{-- @include('landing.slider') --}}
 
-  @include('landing.works')
+  {{-- @include('landing.clients') --}}
 
-  @include('landing.testimonials')
+  {{-- @include('landing.works') --}}
+
+  {{-- @include('landing.testimonials') --}}
 
   @include('landing.contacts')
 </div>
