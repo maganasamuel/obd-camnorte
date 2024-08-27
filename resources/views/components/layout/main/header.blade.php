@@ -1,4 +1,5 @@
-<header class="sticky top-0 z-50 flex flex-wrap w-full pb-3 bg-white dark:bg-neutral-900 md:justify-start md:flex-nowrap pt-7">
+<header class="sticky top-0 z-50 flex flex-wrap w-full pb-3 bg-white dark:bg-neutral-900 md:justify-start md:flex-nowrap pt-7"
+  id="top-header">
   <nav class="relative flex flex-wrap items-center w-full px-4 mx-auto max-w-7xl md:grid md:grid-cols-12 basis-full md:px-8"
     aria-label="Global">
     <div class="md:col-span-3">
@@ -58,11 +59,12 @@
 
     <!-- Collapse -->
     <div id="navbar-collapse-with-animation"
-      class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
-      <div class="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
+      class="hidden h-full overflow-hidden transition-all duration-300 hs-collapse basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
+      <ul class="flex flex-col h-full mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0"
+        id="top-nav">
         <x-topbar-link href="{{ !request()->routeIs('index') ? route('index') : '' }}#home">Home</x-topbar-link>
         <x-topbar-link href="{{ !request()->routeIs('index') ? route('index') : '' }}#contact-us">Contact Us</x-topbar-link>
-      </div>
+      </ul>
     </div>
     <!-- End Collapse -->
   </nav>
