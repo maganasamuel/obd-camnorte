@@ -7,3 +7,6 @@ import 'preline';
 
 import Gumshoe from 'gumshoejs';
 window.Gumshoe = Gumshoe;
+
+import SmoothScroll from 'smooth-scroll';
+window.SmoothScroll = SmoothScroll;

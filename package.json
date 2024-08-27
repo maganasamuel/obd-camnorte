@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "gumshoejs": "^5.1.2",
-        "preline": "^2.4.1"
+        "preline": "^2.4.1",
+        "smooth-scroll": "^16.1.3"
     }
 }
