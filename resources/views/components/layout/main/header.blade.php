@@ -59,8 +59,7 @@
     <!-- Collapse -->
     <div id="navbar-collapse-with-animation"
       class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
-      <div class="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0"
-        data-hs-scrollspy="#scrollspy-main">
+      <div class="flex flex-col mt-5 gap-y-4 gap-x-0 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
         <x-topbar-link href="{{ !request()->routeIs('index') ? route('index') : '' }}#home">Home</x-topbar-link>
         <x-topbar-link href="{{ !request()->routeIs('index') ? route('index') : '' }}#contact-us">Contact Us</x-topbar-link>
       </div>
