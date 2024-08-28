@@ -9,7 +9,7 @@ var mainContentPaddingTop = getComputedStyle(document.querySelector('main#conten
 new SmoothScroll('#top-nav a', {
   speed: 300,
   offset: function () {
-    return topHeader.getBoundingClientRect().height /*  + mainContentPaddingTop */;
+    return topHeader.getBoundingClientRect().height;
   },
 });
 
