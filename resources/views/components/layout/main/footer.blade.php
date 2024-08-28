@@ -26,7 +26,7 @@ $socials = Social::orderBy('order')->get();
             <a class="inline-flex items-center justify-center text-sm font-semibold text-black border border-transparent rounded-full size-8 gap-x-2 hover:text-gray-600 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:text-neutral-400"
               href="{{ $social->url }}"
               target="_blank">
-              @svg('bi-youtube', 'h-6 w-6')
+              @svg($social->icon, 'h-6 w-6 shrink-0')
             </a>
           @endforeach
         </div>
