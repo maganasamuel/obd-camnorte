@@ -16,7 +16,7 @@ export default {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       animation: {
-        'infinite-scroll': 'infinite-scroll 25s linear infinite',
+        'infinite-scroll': 'infinite-scroll linear infinite',
       },
       keyframes: {
         'infinite-scroll': {
