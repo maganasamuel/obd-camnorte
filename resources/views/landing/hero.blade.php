@@ -5,13 +5,11 @@ use App\Models\City;
 
 $cities = City::provinced()->get();
 
-$ads = Ad::active()->effective()->orderBy('order')->limit(8)->get();
+$ads = Ad::active()->effective()->orderBy('order')->get();
 ?>
 
 <div id="home"
   class="space-y-4">
-  @includeWhen($ads->count(), 'landing.ads-top')
-
   <div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl"
     style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
     <img src="{{ Vite::image('cover.jpg') }}"
@@ -73,5 +71,5 @@ $ads = Ad::active()->effective()->orderBy('order')->limit(8)->get();
     </div>
   </div>
 
-  @includeWhen($ads->count(), 'landing.ads-bottom')
+  @includeWhen($ads->count(), 'landing.ads')
 </div>
