@@ -2,7 +2,7 @@
 
 use App\Models\Social;
 
-$socials = Social::orderBy('order')->get();
+$socials = Social::active()->orderBy('order')->get();
 ?>
 
 <footer class="mt-auto border-t border-gray-200 md:border-t-0 dark:border-neutral-700">
