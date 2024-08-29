@@ -1,16 +1,15 @@
 <?php
-
-use App\Models\Ad;
 use App\Models\City;
 
 $cities = City::provinced()->get();
-
-$ads = Ad::active()->effective()->orderBy('order')->get();
 ?>
 
 <div id="home"
-  class="space-y-4">
-  <div class="relative mx-4 overflow-hidden lg:mx-6 rounded-2xl"
+  class="flex items-start mx-4 space-y-4 lg:space-y-0 lg:mx-6">
+
+  @include('landing.ads-start')
+
+  <div class="relative overflow-hidden rounded-2xl"
     style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
     <img src="{{ Vite::image('cover.png') }}"
       class="absolute inset-0 object-cover object-center w-full h-full opacity-10" />
@@ -71,5 +70,7 @@ $ads = Ad::active()->effective()->orderBy('order')->get();
     </div>
   </div>
 
-  @includeWhen($ads->count(), 'landing.ads-mobile')
+  @include('landing.ads-end')
+
+  @include('landing.ads-mobile')
 </div>
