@@ -71,5 +71,5 @@ $ads = Ad::active()->effective()->orderBy('order')->get();
     </div>
   </div>
 
-  @includeWhen($ads->count(), 'landing.ads')
+  @includeWhen($ads->count(), 'landing.ads-mobile')
 </div>

@@ -1,4 +1,4 @@
-<div class="px-4 lg:px-8">
+<div class="px-4 lg:hidden">
   <div
     class="relative py-6 overflow-hidden border-b border-gray-200 md:py-10 dark:border-neutral-700 before:absolute before:top-0 before:start-0 before:z-10 before:w-20 before:h-full before:bg-gradient-to-r before:from-white before:to-transparent after:absolute after:top-0 after:end-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-white after:to-transparent dark:before:from-neutral-900 dark:after:from-neutral-900">
     <div x-data="{ logosWidth: 0, logosWrapperWidth: 0 }"
