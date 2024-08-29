@@ -1,3 +1,30 @@
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('../fonts/BankGothicBT-Light.eot');
+  src: local('Bank Gothic Light'), local('BankGothicBT-Light'), url('../fonts/BankGothicBT-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BankGothicBT-Light.woff2') format('woff2'), url('../fonts/BankGothicBT-Light.woff') format('woff'),
+    url('../fonts/BankGothicBT-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bank Gothic';
+  src: url('../fonts/BankGothicBT-Medium.eot');
+  src: local('Bank Gothic Medium'), local('BankGothicBT-Medium'), url('../fonts/BankGothicBT-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/BankGothicBT-Medium.woff2') format('woff2'), url('../fonts/BankGothicBT-Medium.woff') format('woff'),
+    url('../fonts/BankGothicBT-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ArchTitl';
+  src: url('../fonts/ARCHTITL.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* inter-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */

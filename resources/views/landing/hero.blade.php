@@ -17,7 +17,7 @@ $ads = Ad::active()->effective()->orderBy('order')->get();
     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
       <div class="text-center">
         <div class="relative inline-block">
-          <h1 class="text-4xl font-bold text-gray-800 break-all sm:text-6xl dark:text-neutral-200 text-balance drop-shadow-md">
+          <h1 class="font-sans text-4xl font-bold text-gray-800 break-all sm:text-6xl dark:text-neutral-200 text-balance drop-shadow-md">
             {{ config('app.name') }}
           </h1>
           <div class="absolute top-0 hidden translate-x-20 -translate-y-12 md:block end-0">

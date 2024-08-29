@@ -39,7 +39,7 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased dark:bg-neutral-900">
+<body class="font-serif antialiased dark:bg-neutral-900">
   <x-layout.main.header />
   <main id="content"
     class="pt-4">

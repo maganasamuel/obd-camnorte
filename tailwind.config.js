@@ -13,7 +13,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Bank Gothic', ...defaultTheme.fontFamily.sans],
+        serif: ['ArchTitl', ...defaultTheme.fontFamily.sans],
       },
       animation: {
         'infinite-scroll': 'infinite-scroll linear infinite',
