@@ -4,10 +4,10 @@ use App\Models\City;
 $cities = City::provinced()->get();
 ?>
 
-<div id="home"
-  class="flex items-start mx-4 space-y-4 lg:space-y-0 lg:mx-6">
+{{-- <div id="home"
+  class="relative flex items-start justify-center mx-4 space-x-0 space-y-4 overflow-hidden lg:space-x-4 lg:space-y-0 lg:mx-6">
 
-  @include('landing.ads-start')
+  @include('landing.ads-web', ['position' => 'left'])
 
   <div class="relative overflow-hidden rounded-2xl"
     style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
@@ -70,7 +70,40 @@ $cities = City::provinced()->get();
     </div>
   </div>
 
-  @include('landing.ads-end')
+  @include('landing.ads-web', ['position' => 'right'])
 
   @include('landing.ads-mobile')
+</div> --}}
+
+<div class="relative flex items-start justify-center overflow-hidden bg-amber-500">
+  <div class="absolute left-0 flex-none">
+    <div>Ads Left</div>
+    <div>Ads Left</div>
+    <div>Ads Left</div>
+    <div>Ads Left</div>
+    <div>Ads Left</div>
+  </div>
+
+  <div class="flex-none invisible bg-teal-500">
+    <div>Ads Left</div>
+  </div>
+
+  <div class="flex-1 mx-4 text-center bg-rose-500">
+    <div>
+      <div>Hero</div>
+      <div>Hero</div>
+    </div>
+  </div>
+
+  <div class="flex-none invisible bg-indigo-500">
+    <div>Ads Right</div>
+  </div>
+
+  <div class="absolute right-0 flex-none">
+    <div>Ads Right</div>
+    <div>Ads Right</div>
+    <div>Ads Right</div>
+    <div>Ads Right</div>
+    <div>Ads Right</div>
+  </div>
 </div>
