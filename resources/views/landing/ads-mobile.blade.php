@@ -13,6 +13,8 @@ $ads = Ad::active()->effective()->orderBy('order')->limit(10)->get();
             logosWidth = $refs.logos.clientWidth;
         
             logosWrapperWidth = $refs.logosWrapper.clientWidth;
+
+            console.log({logosWidth, logosWrapperWidth});
         
             if (logosWidth < logosWrapperWidth) {
                 return;
@@ -32,7 +34,7 @@ $ads = Ad::active()->effective()->orderBy('order')->limit(10)->get();
               'flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none gap-x-4': true,
               'animate-infinite-scroll': logosWidth >= logosWrapperWidth,
           }"
-          style="animation-duration: {{ $ads->count() * 3 }}s;">
+          style="animation-duration: {{ $ads->count() * 1 }}s;">
           @foreach ($ads as $ad)
             <li>
               <img src="{{ $ad->getFirstMediaUrl('ads', 'thumb') }}"
