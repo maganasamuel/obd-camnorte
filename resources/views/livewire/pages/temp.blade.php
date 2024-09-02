@@ -7,12 +7,12 @@ layout('layouts.main');
 state(['ads']);
 
 mount(function () {
-    $this->ads = Ad::active()->effective()->orderBy('order')->limit(12)->get();
+    $this->ads = Ad::active()->effective()->orderBy('order')->limit(1)->get();
 });
 ?>
 
-<div class="relative min-h-screen">
-  <div class="mx-4">
+<div class="relative min-h-screen bg-teal-900">
+  <div class="max-w-screen-lg mx-auto my-8">
     <div x-data=""
       x-init="$nextTick(() => {
           let ul = $refs.logos;
@@ -25,7 +25,7 @@ mount(function () {
             'flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none',
             'animate-infinite-scroll' => true,
         ])
-        style="animation-duration: {{ $ads->count() * 1 }}s;">
+        style="animation-duration: {{ $ads->count() * 3 }}s;">
         @foreach ($ads as $ad)
           <li>
             <img src="{{ $ad->getFirstMediaUrl('ads', 'thumb') }}"
