@@ -18,11 +18,21 @@ export default {
       },
       animation: {
         'loop-scroll-left': 'loop-scroll-left linear infinite',
+        'loop-scroll-up': 'loop-scroll-up linear infinite',
+        'loop-scroll-down': 'loop-scroll-down linear infinite',
       },
       keyframes: {
         'loop-scroll-left': {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-100%)' },
+        },
+        'loop-scroll-up': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(-100%)' },
+        },
+        'loop-scroll-down': {
+          from: { transform: 'translateY(0%)' },
+          to: { transform: 'translateY(100%)' },
         },
       },
     },
