@@ -1,19 +1,32 @@
 <?php
-use App\Models\City;
+use App\Models\{Ad, City};
 
 $cities = City::provinced()->get();
+
+$ads = Ad::active()->effective()->orderBy('order')->limit(4)->get();
+
+$adsWeb = [
+    'left' => $ads->split(2)[0] ?? collect(),
+    'right' => $ads->split(2)[1] ?? collect(),
+];
 ?>
 
 <div id="home"
-  class="relative flex flex-col items-stretch justify-center mx-4 space-x-0 space-y-4 overflow-hidden lg:items-start lg:flex-row lg:space-x-4 lg:space-y-0 lg:mx-6">
+  @class([
+      'relative flex overflow-hidden mx-4 lg:mx-6',
+      'flex-col items-stretch justify-center space-x-0 space-y-4' =>
+          $ads->count() <= 1,
+      'flex-col items-stretch justify-center space-x-0 space-y-4 lg:items-start lg:flex-row lg:space-x-4 lg:space-y-0' =>
+          $ads->count() >= 2,
+  ])>
 
   @include('landing.ads-web', ['position' => 'left'])
 
-  <div class="relative overflow-hidden rounded-2xl"
+  <div class="relative flex-1 overflow-hidden rounded-2xl"
     style="background: linear-gradient(60deg, #61dc57 0%, #61dc57 30%, #b4eb58 0%);">
     <img src="{{ Vite::image('cover.png') }}"
       class="absolute inset-0 object-cover object-center w-full h-full opacity-10" />
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
+    <div class="px-4 py-10 mx-auto sm:px-6 lg:px-8 sm:py-24">
       <div class="text-center">
         <div class="relative inline-block">
           <h1 class="font-sans text-4xl font-bold text-gray-800 break-all sm:text-6xl dark:text-neutral-200 text-balance drop-shadow-md">
