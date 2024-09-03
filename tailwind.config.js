@@ -17,10 +17,10 @@ export default {
         serif: ['ArchTitl', ...defaultTheme.fontFamily.sans],
       },
       animation: {
-        'infinite-scroll': 'infinite-scroll linear infinite',
+        'loop-scroll-left': 'loop-scroll-left linear infinite',
       },
       keyframes: {
-        'infinite-scroll': {
+        'loop-scroll-left': {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-100%)' },
         },
