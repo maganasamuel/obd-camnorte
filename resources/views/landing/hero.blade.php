@@ -3,7 +3,7 @@ use App\Models\{Ad, City};
 
 $cities = City::provinced()->get();
 
-$ads = Ad::active()->effective()->orderBy('order')->limit(4)->get();
+$ads = Ad::active()->effective()->orderBy('order')->limit(20)->get();
 
 $adsWeb = [
     'left' => $ads->split(2)[0] ?? collect(),
@@ -16,7 +16,7 @@ $adsWeb = [
       'relative flex overflow-hidden mx-4 lg:mx-6',
       'flex-col items-stretch justify-center space-x-0 space-y-4' =>
           $ads->count() <= 1,
-      'flex-col items-stretch justify-center space-x-0 space-y-4 lg:items-start lg:flex-row lg:space-x-4 lg:space-y-0' =>
+      'flex-col items-stretch justify-center space-x-0 space-y-4 lg:items-stretch lg:flex-row lg:space-x-4 lg:space-y-0' =>
           $ads->count() >= 2,
   ])>
 
