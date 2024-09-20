@@ -31,12 +31,12 @@
             'flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none': true,
             'animate-loop-scroll-left': logosWidth >= logosWrapperWidth
         }"
-        style="animation-duration: {{ $ads->count() * 3 }}s;">
+        style="animation-duration: {{ $ads->count() * 6 }}s;">
         @foreach ($ads as $ad)
           <li>
             <img src="{{ $ad->getFirstMediaUrl('ads', 'thumb') }}"
               alt="{{ $ad->name }}"
-              class="object-contain object-center h-[90px] w-[160px] rounded-lg border border-gray-200 dark:border-neutral-700 shadow p-1" />
+              class="object-contain object-center h-[90px] w-[160px] rounded-lg shadow" />
           </li>
         @endforeach
       </ul>
