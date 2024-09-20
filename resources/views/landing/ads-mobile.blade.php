@@ -7,14 +7,14 @@
       
           logosWrapperWidth = $refs.logosWrapper.clientWidth;
       
-          console.log({ logosWidth, logosWrapperWidth });
-      
           if (logosWidth < logosWrapperWidth) {
               return;
           }
       
           let ul = $refs.logos;
+
           ul.insertAdjacentHTML('afterend', ul.outerHTML);
+          
           ul.nextSibling.setAttribute('aria-hidden', 'true');
       });"
       x-ref="logosWrapper"
