@@ -3,7 +3,7 @@ use App\Models\{Ad, City};
 
 $cities = City::provinced()->get();
 
-$ads = Ad::active()->effective()->orderBy('order')->limit(20)->get();
+$ads = Ad::active()->effective()->orderBy('order')->get();
 
 $adsWeb = [
     'left' => $ads->split(2)[0] ?? collect(),
