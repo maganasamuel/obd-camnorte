@@ -1,9 +1,4 @@
-<div @class([
-    'relative hidden shrink-0',
-    'lg:block' => $ads->count() >= 2,
-    'before:absolute before:top-0 before:start-0 before:z-10 before:h-11 before:w-full before:bg-gradient-to-b before:from-white before:to-transparent after:absolute after:bottom-0 after:start-0 after:h-11 after:w-full after:bg-gradient-to-t after:from-white after:to-transparent dark:before:from-neutral-900 dark:after:from-neutral-900',
-    '[mask-image:_linear-gradient(to_bottom,transparent_0,_black_96px,_black_calc(100%-96px),transparent_100%)]',
-])
+<div @class(['relative hidden shrink-0', 'lg:block' => $ads->count() >= 2])
   x-data="{ logosHeight: 0, logosWrapperHeight: 0, 'position': '{{ ['left' => 'afterend', 'right' => 'beforebegin'][$position] }}' }"
   x-init="$nextTick(() => {
       logosHeight = $refs.logos.clientHeight;
@@ -23,7 +18,11 @@
       } catch (error) {}
   
   });"
-  x-ref="logosWrapper">
+  x-ref="logosWrapper"
+  x-bind:class="{
+      'before:absolute before:top-0 before:start-0 before:z-10 before:h-11 before:w-full before:bg-gradient-to-b before:from-white before:to-transparent after:absolute after:bottom-0 after:start-0 after:h-11 after:w-full after:bg-gradient-to-t after:from-white after:to-transparent dark:before:from-neutral-900 dark:after:from-neutral-900 [mask-image:_linear-gradient(to_bottom,transparent_0,_black_96px,_black_calc(100%-96px),transparent_100%)]': logosHeight >=
+          logosWrapperHeight
+  }">
   <div @class([
       'grid gap-4',
       'grid-cols-1' => $adsWeb[$position]->count() <= 1,
