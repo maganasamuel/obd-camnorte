@@ -31,8 +31,8 @@ export default {
           to: { transform: 'translateY(-100%)' },
         },
         'loop-scroll-down': {
-          from: { transform: 'translateY(0%)' },
-          to: { transform: 'translateY(100%)' },
+          from: { transform: 'translateY(-100%)' },
+          to: { transform: 'translateY(0)' },
         },
       },
     },
