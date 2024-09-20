@@ -22,6 +22,11 @@ class AdTestSeeder extends Seeder
 
         Media::truncate();
 
+        $this->lorem();
+    }
+
+    public function default()
+    {
         $disk = Storage::disk('public');
 
         $brandLogos = $disk->files('ads');
@@ -35,5 +40,13 @@ class AdTestSeeder extends Seeder
                 ->preservingOriginal()
                 ->toMediaCollection('ads');
         }
+    }
+
+    public function lorem()
+    {
+        Ad::factory()->count(20)->create()->each(function ($ad) {
+            $ad->addMediaFromUrl(fake()->imageUrl(192, 108, ['logo']))
+                ->toMediaCollection('ads');
+        });
     }
 }
