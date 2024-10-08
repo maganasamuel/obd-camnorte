@@ -85,7 +85,8 @@ class ContactResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->selectCurrentPageOnly();
     }
 
     public static function getPages(): array
