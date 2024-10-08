@@ -9,7 +9,7 @@ use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
-use Illuminate\Database\Eloquent\{Builder, SoftDeletingScope};
+use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletingScope};
 
 class IndustryResource extends Resource
 {
