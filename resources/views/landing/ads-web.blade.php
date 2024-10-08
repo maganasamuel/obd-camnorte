@@ -52,7 +52,7 @@
           <li>
             <img src="{{ $ad->getFirstMediaUrl('ads', 'thumb') }}"
               alt="{{ $ad->name }}"
-              class="object-contain object-center h-[90px] w-[160px] rounded-lg border border-gray-200 dark:border-neutral-700 shadow p-1" />
+              class="object-contain object-center h-[90px] w-[160px] rounded-lg dark:border-neutral-700 shadow" />
           </li>
         @endforeach
       </ul>

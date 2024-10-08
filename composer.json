@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
+        "xvladqt/faker-lorem-flickr": "*",
         "yajra/laravel-address": "^11.0"
     },
     "require-dev": {

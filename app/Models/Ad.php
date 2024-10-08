@@ -7,6 +7,7 @@ use App\Traits\HasOrderColumn;
 use App\Traits\Scopes\{HasActiveScope, HasEffectiveScope};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Builder, Model};
+use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\{HasMedia, InteractsWithMedia};
 
@@ -28,9 +29,7 @@ class Ad extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->keepOriginalImageFormat()
-            ->width(192)
-            ->height(108)
-            ->nonQueued();
+            ->fit(Fit::Contain, 192, 108);
     }
 
     protected function casts(): array
