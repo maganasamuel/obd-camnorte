@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 flex flex-wrap w-full pb-3 bg-white dark:bg-neutral-900 md:justify-start md:flex-nowrap pt-7"
+<header class="sticky top-0 z-50 flex flex-wrap w-full py-3 bg-white dark:bg-neutral-900 md:justify-start md:flex-nowrap "
   id="top-header">
   <nav class="relative flex flex-wrap items-center w-full px-4 mx-auto max-w-7xl md:grid md:grid-cols-12 basis-full md:px-8"
     aria-label="Global">
