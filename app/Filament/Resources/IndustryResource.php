@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\IndustryResource\{Pages, RelationManagers};
 use App\Models\Industry;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
@@ -48,7 +49,20 @@ class IndustryResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->before(function (Tables\Actions\DeleteAction $action, Model $industry) {
+                        if ($industry->businessTypes()->count()) {
+                            Notification::make()
+                                ->danger()
+                                ->color('danger')
+                                ->title('Delete Plan')
+                                ->body('Could not delete industry. Please make sure that there is no business type with this industry.')
+                                ->persistent()
+                                ->send();
+
+                            $action->cancel();
+                        }
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
