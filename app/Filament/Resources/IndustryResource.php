@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\{Forms, Tables};
 use Illuminate\Database\Eloquent\{Builder, Model, SoftDeletingScope};
+use Illuminate\Support\Collection;
 
 class IndustryResource extends Resource
 {
@@ -66,7 +67,22 @@ class IndustryResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->before(function (Tables\Actions\DeleteBulkAction $action, Collection $records) {
+                            foreach ($records as $record) {
+                                if ($record->businessTypes()->count()) {
+                                    Notification::make()
+                                        ->danger()
+                                        ->color('danger')
+                                        ->title('Delete Plan')
+                                        ->body('Could not delete industry. Please make sure that there is no business type with this industry.')
+                                        ->persistent()
+                                        ->send();
+
+                                    $action->cancel();
+                                }
+                            }
+                        }),
                 ]),
             ])
             ->selectCurrentPageOnly();
