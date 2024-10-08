@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
                 : 'admin@mail.com',
         ]);
 
-        $this->call([AddressSeeder::class, CitySlugSeeder::class]);
+        $this->call([
+            AddressSeeder::class,
+            CitySlugSeeder::class,
+            IndustrySeeder::class,
+        ]);
     }
 }
